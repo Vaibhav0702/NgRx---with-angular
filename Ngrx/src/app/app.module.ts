@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpService } from './Service/http.service';
 import { ApiService } from './Service/api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     YoutubeLayoutComponent,
     UsersComponent,
-    PostComponent
+    PostComponent,
+    UserCardComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
