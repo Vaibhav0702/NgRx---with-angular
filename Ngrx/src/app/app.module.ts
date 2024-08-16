@@ -10,6 +10,9 @@ import { UsersComponent } from './containers/users/users.component';
 import { PostComponent } from './containers/post/post.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpService } from './Service/http.service';
+import { ApiService } from './Service/api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,9 +27,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
+    HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [HttpService , ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
