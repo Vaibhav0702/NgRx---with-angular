@@ -15,6 +15,8 @@ import { ApiService } from './Service/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './reducer';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     MaterialModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot(rootReducer),
   ],
   providers: [HttpService , ApiService],
   bootstrap: [AppComponent]
