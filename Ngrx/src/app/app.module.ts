@@ -17,6 +17,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './reducer';
+import { ManagerService } from './Service/manager.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { rootReducer } from './reducer';
     BrowserAnimationsModule,
     StoreModule.forRoot(rootReducer),
   ],
-  providers: [HttpService , ApiService],
+  providers: [HttpService , ApiService , ManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

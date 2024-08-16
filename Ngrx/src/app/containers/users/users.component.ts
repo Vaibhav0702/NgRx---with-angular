@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { combineLatest } from 'rxjs';
-import { UserListRequestAction, UserListSuccessAction } from 'src/app/actions/user-action';
+
+
 import { User } from 'src/app/models/user';
-import { getUserLoaded, getUserLoading, getUsers, RootReducerState } from 'src/app/reducer';
-import { ApiService } from 'src/app/Service/api.service';
+import { ManagerService } from 'src/app/Service/manager.service';
+
 
 @Component({
   selector: 'app-users',
@@ -15,7 +14,7 @@ export class UsersComponent implements OnInit {
 
   users: User[] = []
 
-  constructor(private apiService: ApiService, private store: Store<RootReducerState>) {
+  constructor(private managerService : ManagerService) {
 
   }
 
@@ -25,33 +24,11 @@ export class UsersComponent implements OnInit {
   }
 
 
-
-
   fetchData() {
-
-
-    const loading$ = this.store.select(getUserLoading);
-    const loaded$ = this.store.select(getUserLoaded);
-    const getUserData = this.store.select(getUsers);
-
-    combineLatest([loaded$, loading$]).subscribe((data) => {
-
-      if (!data[0] && !data[1]) {
-
-        this.store.dispatch(new UserListRequestAction());
-
-        this.apiService.getAllUser().subscribe((data => {
-          console.warn(data)
-          this.store.dispatch(new UserListSuccessAction({ data }));
-        }));
-
-      }
-    })
-
-    getUserData.subscribe((data) => {
-      this.users = data;
-      console.warn(data)
-    })
+   const userData$ =  this.managerService.getUserList()[1];
+   userData$.subscribe((data)=>{
+    this.users = data
+   })
   }
 
 
