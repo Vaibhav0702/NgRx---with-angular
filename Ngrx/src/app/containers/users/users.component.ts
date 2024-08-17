@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-
 import { User } from 'src/app/models/user';
 import { ManagerService } from 'src/app/Service/manager.service';
 
@@ -13,6 +11,8 @@ import { ManagerService } from 'src/app/Service/manager.service';
 export class UsersComponent implements OnInit {
 
   users: User[] = []
+  loading = false;
+  error = false;
 
   constructor(private managerService : ManagerService) {
 
@@ -25,13 +25,41 @@ export class UsersComponent implements OnInit {
 
 
   fetchData() {
-   const userData$ =  this.managerService.getUserList()[1];
+   const observer$ =  this.managerService.getUserList()
+   const userData$ =  observer$[1];
+   const loading$ = observer$[0];
+   const error$ = observer$[2];
+
+
+
+
+
    userData$.subscribe((data)=>{
     this.users = data
    })
+
+
+   loading$.subscribe((data)=>{
+     this.loading = data;
+   })
+
+   error$.subscribe((data)=>{
+    this.error = data;
+  })
+
+
+
+
+
   }
 
 
+
+
+  tryAgain(){
+
+    this.managerService.getUserList(true);
+  }
 
 
 }

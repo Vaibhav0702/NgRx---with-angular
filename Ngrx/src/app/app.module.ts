@@ -18,6 +18,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './reducer';
 import { ManagerService } from './Service/manager.service';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ManagerService } from './Service/manager.service';
     UsersComponent,
     PostComponent,
     UserCardComponent,
-    UserListComponent
+    UserListComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
