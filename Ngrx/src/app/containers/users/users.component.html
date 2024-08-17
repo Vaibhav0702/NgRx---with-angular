@@ -1,7 +1,7 @@
-<div class="d-flex justify-content-center align-items-center h-50"   fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="30px">
+<div class="d-flex justify-content-center align-items-center"   fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="30px">
     <app-user-list *ngIf="!loading && !error" [users]="this.users"></app-user-list>
     <mat-spinner  *ngIf="loading"  ></mat-spinner>
 
     <app-error (reload)="tryAgain()"  *ngIf="error && !loading"  ></app-error>
-
+    <button *ngIf="!loading && !error" (click)="addUser()" class="m-2" mat-raised-button color="primary">Add User</button>
 </div>

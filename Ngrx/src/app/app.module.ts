@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,11 @@ import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './reducer';
 import { ManagerService } from './Service/manager.service';
 import { ErrorComponent } from './components/error/error.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';  // For Responsive Layout
 
 @NgModule({
   declarations: [
@@ -30,15 +35,21 @@ import { ErrorComponent } from './components/error/error.component';
     PostComponent,
     UserCardComponent,
     UserListComponent,
-    ErrorComponent
+    ErrorComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    HttpClientModule,
+    HttpClientModule,  // remove Circular depanday error
+    ReactiveFormsModule,
+    FormsModule,
+    FlexLayoutModule,
+    FlexModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot(rootReducer),
+    StoreModule.forRoot(rootReducer),   // connect rootReducer to Store
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [HttpService , ApiService , ManagerService],
   bootstrap: [AppComponent]

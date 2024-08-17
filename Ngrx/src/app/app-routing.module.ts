@@ -6,7 +6,7 @@ import { PostComponent } from './containers/post/post.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [{
-  path:'', component: DashboardComponent,
+  path:'', component: DashboardComponent,  // parent compoment
   children : [
    {path : '' , component: UsersComponent},
    {path : 'post' , component: PostComponent} 

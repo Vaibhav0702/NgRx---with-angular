@@ -1,0 +1,15 @@
+<form [formGroup]="userForm" (ngSubmit)="this.userForm.valid && this.addOrUpdateUser()">
+    <div class="back" fxLayout="column" fxLayoutAlign="center stretch">
+      <mat-form-field>
+        <input formControlName="email" matInput placeholder="email"/>
+        <mat-error>Valid email is Required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="name" matInput placeholder="username"/>
+        <mat-error>Name is Required</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary"
+              type="submit">{{this.data ? 'Update' : 'Add'}}
+      </button>
+    </div>
+</form>
