@@ -1,0 +1,16 @@
+<mat-card fxLayout="column">
+    <mat-card-title>{{post.title}}</mat-card-title>
+    <mat-card-content fxLayout="column">
+      <div style="margin: 5px" fxLayout="row" fxLayoutGap="30px" *ngFor="let comment of post.comments">
+        <p>{{comment.description}}</p>
+        <button mat-button color="accent" (click)="editComment(comment)" >Edit</button>
+        <button (click)="deleteComment(comment.id)" mat-button color="warn">Delete</button>
+      </div>
+      <div fxFlex="row" fxLayoutGap="30px">
+        <mat-form-field>
+          <input [(ngModel)]="commentDescription" matInput placeholder="Enter your Comment"/>
+        </mat-form-field>
+        <button (click)="addComment()" mat-raised-button color="primary">Add</button>
+      </div>
+    </mat-card-content>
+  </mat-card>

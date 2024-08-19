@@ -23,7 +23,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';  // For Responsive Layout
+import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
+import { ViewUserComponent } from './containers/view-user/view-user.component';
+import { PostCardComponent } from './components/post-card/post-card.component';
+import { PostListComponent } from './components/post-list/post-list.component';  // For Responsive Layout
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';  // For Respo
     UserCardComponent,
     UserListComponent,
     ErrorComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    ViewUserComponent,
+    PostCardComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,

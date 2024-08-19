@@ -4,11 +4,13 @@ import { DashboardComponent } from './components/layout/dashboard/dashboard.comp
 import { UsersComponent } from './containers/users/users.component';
 import { PostComponent } from './containers/post/post.component';
 import { AppComponent } from './app.component';
+import { ViewUserComponent } from './containers/view-user/view-user.component';
 
 const routes: Routes = [{
   path:'', component: DashboardComponent,  // parent compoment
   children : [
    {path : '' , component: UsersComponent},
+   {path : 'user/:id' , component: ViewUserComponent},
    {path : 'post' , component: PostComponent} 
   ]
 }];
